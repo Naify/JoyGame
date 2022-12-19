@@ -59,6 +59,7 @@ void AJoyCharacter::SetupPlayerInputComponent(UInputComponent *PlayerInputCompon
     PlayerInputComponent->BindAxis("LookUp", this, &AJoyCharacter::AddControllerPitchInput);
     PlayerInputComponent->BindAxis("Turn", this, &AJoyCharacter::AddControllerYawInput);
     PlayerInputComponent->BindAction("Fire", IE_Pressed, WeaponComponent, &UWeaponComponent::Fire);
+    PlayerInputComponent->BindAction("Reload", IE_Pressed, WeaponComponent, &UWeaponComponent::Reload);
 }
 
 void AJoyCharacter::MoveForward(float Amount)

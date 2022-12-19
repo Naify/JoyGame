@@ -14,7 +14,7 @@ ARifleWeapon::ARifleWeapon()
 void ARifleWeapon::Fire()
 {
     const auto Player = Cast<ACharacter>(GetOwner());
-    if (!Player)
+    if (!Player || IsAllAmmoEmpty())
         return;
 
     const auto Controller = Player->GetController<APlayerController>();
@@ -54,6 +54,8 @@ void ARifleWeapon::Fire()
     {
         DrawDebugLine(GetWorld(), SocketTransform.GetLocation(), TraceEnd, FColor::Red, false, 3.0f, 0, 3.0f);
     }
+
+    DecreaseAmmo();
 }
 
 void ARifleWeapon::MakeDamage(const FHitResult &HitResult)

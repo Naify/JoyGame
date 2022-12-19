@@ -14,7 +14,7 @@ ASecondWeapon::ASecondWeapon()
 void ASecondWeapon::Fire()
 {
     const auto Player = Cast<ACharacter>(GetOwner());
-    if (!Player)
+    if (!Player || IsAllAmmoEmpty())
         return;
 
     const auto Controller = Player->GetController<APlayerController>();
@@ -54,6 +54,8 @@ void ASecondWeapon::Fire()
     {
         DrawDebugLine(GetWorld(), SocketTransform.GetLocation(), TraceEnd, FColor::Red, false, 3.0f, 0, 3.0f);
     }
+
+    DecreaseAmmo();
 }
 
 void ASecondWeapon::MakeDamage(const FHitResult &HitResult)

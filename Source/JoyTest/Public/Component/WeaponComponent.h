@@ -17,6 +17,7 @@ class JOYTEST_API UWeaponComponent : public UActorComponent
     UWeaponComponent();
 
     void Fire();
+    void Reload();
 
   protected:
     virtual void BeginPlay() override;
@@ -28,12 +29,23 @@ class JOYTEST_API UWeaponComponent : public UActorComponent
     FName SocketName = "WeaponSocket";
     
     UFUNCTION(BlueprintCallable, Category = "Weapon")
-    void SpawnWeapon(TSubclassOf<ABaseWeapon> WeaponClass);
+    void SpawnWeapon(TSubclassOf<ABaseWeapon> Weapon, UAnimMontage *Reload);
 
     UFUNCTION(BlueprintCallable, Category = "Weapon")
     void DestoryWeapon();
 
   private:
     UPROPERTY()
-    ABaseWeapon *CurrentWeapon = nullptr;
+    ABaseWeapon *Weapon = nullptr;
+
+    UPROPERTY()
+    UAnimMontage *ReloadAnimMontage = nullptr;
+
+    void InitAnim();
+    bool ReloadAnimInProgress = false;
+    void OnReloadFinished();
+    bool CanReload() const;
+
+    void OnEmptyClip();
+    void ChangeClip();
 };
