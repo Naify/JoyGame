@@ -21,9 +21,7 @@ class JOYTEST_API UWeaponComponent : public UActorComponent
 
   protected:
     virtual void BeginPlay() override;
-
-    /*UPROPERTY(EditDefaultsOnly, Category = "Weapon")
-    TSubclassOf<ABaseWeapon> WeaponClass;*/
+    virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
 
     UPROPERTY(EditDefaultsOnly, Category = "Weapon")
     FName SocketName = "WeaponSocket";

@@ -17,6 +17,18 @@ void UWeaponComponent::BeginPlay()
     //SpawnWeapon();
 }
 
+void UWeaponComponent::EndPlay(const EEndPlayReason::Type EndPlayReason)
+{
+    if (!Weapon)
+        return;
+
+    Weapon->DetachFromActor(FDetachmentTransformRules::KeepWorldTransform);
+    Weapon->Destroy();
+    Weapon = nullptr;   
+    
+    Super::EndPlay(EndPlayReason);
+}
+
 void UWeaponComponent::SpawnWeapon(TSubclassOf<ABaseWeapon> WeaponClass, UAnimMontage *Reload)
 {
     ACharacter *Character = Cast<ACharacter>(GetOwner());
