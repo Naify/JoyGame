@@ -103,6 +103,16 @@ void UWeaponComponent::Reload()
     ChangeClip();
 }
 
+bool UWeaponComponent::GetWeaponCurrentAmmo(FAmmo& Ammo) const
+{
+    if (Weapon)
+    {
+        Ammo = Weapon->GetCurrentAmo();
+        return true;
+    }
+    return false;
+}
+
 void UWeaponComponent::InitAnim()
 {
     if (!ReloadAnimMontage)

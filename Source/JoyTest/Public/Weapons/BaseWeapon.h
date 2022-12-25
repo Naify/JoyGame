@@ -4,23 +4,12 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "Structs.h"
 #include "BaseWeapon.generated.h"
 
 DECLARE_MULTICAST_DELEGATE(FOnClipEmpty);
 
 class USkeletalMeshComponent;
-
-USTRUCT(BlueprintType)
-struct FAmmo
-{
-    GENERATED_USTRUCT_BODY()
-
-    UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Weapon")
-    int32 Bullets;
-
-    UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Weapon")
-    int32 Clips;
-};
 
 UCLASS()
 class JOYTEST_API ABaseWeapon : public AActor
@@ -37,6 +26,8 @@ class JOYTEST_API ABaseWeapon : public AActor
     void ChangeClip();
     bool CanReload() const;
     bool IsAllAmmoEmpty() const;
+
+    FAmmo GetCurrentAmo() const { return CurrentAmmo; }
 
   protected:
     virtual void BeginPlay() override;

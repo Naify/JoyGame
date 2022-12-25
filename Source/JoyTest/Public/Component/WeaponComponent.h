@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
+#include "Structs.h"
 #include "WeaponComponent.generated.h"
 
 class ABaseWeapon;
@@ -18,6 +19,8 @@ class JOYTEST_API UWeaponComponent : public UActorComponent
 
     void Fire();
     void Reload();
+
+    bool GetWeaponCurrentAmmo(FAmmo &Ammo) const;
 
   protected:
     virtual void BeginPlay() override;
