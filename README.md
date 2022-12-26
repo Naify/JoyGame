@@ -12,7 +12,7 @@ Tasks:
 
 4. Death from artificial sources of damage (bots, turrets or volumes) and respawn of the player
 
-5. *Optional: 
+5. *Optional: Bullets count and reload
 
 ## Preview
 

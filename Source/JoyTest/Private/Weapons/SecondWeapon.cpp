@@ -30,7 +30,9 @@ void ASecondWeapon::Fire()
 
     const FTransform SocketTransform = WeaponMesh->GetSocketTransform(SocketName);
     const FVector TraceStart = ViewLocation; // for VR start can be from muzzle - SocketTransform.GetLocation();
-    const FVector ShootDirection = ViewRotation.Vector(); // SocketTransform.GetRotation().GetForwardVector();
+    //const FVector ShootDirection = ViewRotation.Vector(); // SocketTransform.GetRotation().GetForwardVector();
+    const auto HalfRad = FMath::DegreesToRadians(Spread);
+    const FVector ShootDirection = FMath::VRandCone(ViewRotation.Vector(), HalfRad);
     const FVector TraceEnd = TraceStart + ShootDirection * TraceDistance;
 
     FCollisionQueryParams CollisionParams;

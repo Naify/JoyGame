@@ -44,10 +44,13 @@ class JOYTEST_API ABaseWeapon : public AActor
     UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Weapon")
     float DamageToHealth = 10.0f;
 
-    virtual void MakeDamage(const FHitResult &HitResult);
-
     UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Weapon")
     FAmmo DefaultAmmo {5, 2};
+
+    UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Weapon")
+    float Spread = 1.1f;
+
+    virtual void MakeDamage(const FHitResult &HitResult);
 
     void DecreaseAmmo();
     

@@ -18,4 +18,7 @@ class JOYTEST_API UPlayerWidget : public UUserWidget
 
     UFUNCTION(BlueprintCallable, Category = "UI")
     bool GetWeaponAmmo(FAmmo &Ammo) const;
+
+    UFUNCTION(BlueprintCallable, Category = "UI")
+    bool HaveWeapon() const;
 };

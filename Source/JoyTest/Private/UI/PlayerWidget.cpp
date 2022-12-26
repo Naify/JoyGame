@@ -32,3 +32,17 @@ bool UPlayerWidget::GetWeaponAmmo(FAmmo &Ammo) const
 
     return WeaponComponent->GetWeaponCurrentAmmo(Ammo);
 }
+
+bool UPlayerWidget::HaveWeapon() const
+{
+    const auto Player = GetOwningPlayerPawn();
+    if (!Player)
+        return false;
+
+    const auto Component = Player->GetComponentByClass(UWeaponComponent::StaticClass());
+    const auto WeaponComponent = Cast<UWeaponComponent>(Component);
+    if (!WeaponComponent)
+        return false;
+
+    return WeaponComponent->HaveWeapon();
+}

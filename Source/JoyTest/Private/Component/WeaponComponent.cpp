@@ -113,6 +113,13 @@ bool UWeaponComponent::GetWeaponCurrentAmmo(FAmmo& Ammo) const
     return false;
 }
 
+bool UWeaponComponent::HaveWeapon() const
+{
+    if (!Weapon)
+        return false;
+    return true;
+}
+
 void UWeaponComponent::InitAnim()
 {
     if (!ReloadAnimMontage)

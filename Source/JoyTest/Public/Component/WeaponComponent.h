@@ -21,6 +21,7 @@ class JOYTEST_API UWeaponComponent : public UActorComponent
     void Reload();
 
     bool GetWeaponCurrentAmmo(FAmmo &Ammo) const;
+    bool HaveWeapon() const;
 
   protected:
     virtual void BeginPlay() override;
